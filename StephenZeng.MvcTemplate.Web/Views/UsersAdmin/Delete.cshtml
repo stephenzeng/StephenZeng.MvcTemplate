@@ -1,0 +1,59 @@
+﻿@model StephenZeng.MvcTemplate.Common.Entities.User
+
+<h4 class="text-danger">Are you sure you want to delete this User?</h4>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>Email confirmed</dt>
+        <dd>
+            @Model.EmailConfirmed.ToIcon()
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Approved)</dt>
+        <dd>
+            @Model.Approved.ToIcon()
+        </dd>
+        @if (ViewBag.RoleNames.Contains("Client"))
+        {
+            <dt>@Html.DisplayNameFor(model => model.Accounts)</dt>
+            <dd>
+                @Html.DisplayFor(model => model.Accounts)
+            </dd>
+            <dt>@Html.DisplayNameFor(model => model.AdviserEmail)</dt>
+            <dd>
+                @Html.DisplayFor(model => model.AdviserEmail)
+            </dd>
+        }
+        <dt>@Html.DisplayNameFor(model => model.Roles)</dt>
+        <dd>
+            @string.Join(", ", ViewBag.RoleNames)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.RegisterTime)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegisterTime)
+        </dd>
+        <dt></dt>
+        <dd class="margin-top-35">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </div>
+            }
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Url.GoBackTo("Go back to list", "Index")
+</p>

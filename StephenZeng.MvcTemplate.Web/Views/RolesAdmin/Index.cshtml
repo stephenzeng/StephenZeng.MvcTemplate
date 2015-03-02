@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", new{item.Id})" class="pull-right">
+                    <i class="fa fa-edit"></i> Details
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

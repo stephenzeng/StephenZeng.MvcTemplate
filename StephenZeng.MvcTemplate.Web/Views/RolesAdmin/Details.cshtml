@@ -1,0 +1,35 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>Users in the role</dt>
+        <dd>
+            <span class="badge">@ViewBag.Users.Count</span> users in total
+        </dd>
+        <dt></dt>
+        <dd>
+            @foreach (var item in ViewBag.Users)
+            {
+                <div>
+                    <a href="@Url.Action("Details", "UsersAdmin", new {id = item.Id})">
+                        @item.FirstName @item.LastName &lt;@item.UserName&gt;
+                    </a>
+                </div>
+            }
+        </dd>
+        <dt></dt>
+        <dd class="margin-top-35">
+            <div class="pull-left margin-right-15">@Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @Class = "btn btn-default" })</div>
+        </dd>
+    </dl>
+</div>
+
+<p>
+   @Url.GoBackTo("Go back to list", "Index")
+</p>
+
+

@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/StephenZeng.MvcTemplate.Common/bin/Debug
+/StephenZeng.MvcTemplate.Common/obj/Debug
+/StephenZeng.MvcTemplate.Web/bin
+/StephenZeng.MvcTemplate.Web/logs
+/StephenZeng.MvcTemplate.Web/obj/Debug
+*.user
+*.suo

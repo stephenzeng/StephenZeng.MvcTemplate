@@ -1,0 +1,70 @@
+﻿@using System.Web.Optimization
+@{
+    var version = System.Reflection.Assembly.GetAssembly(typeof(StephenZeng.MvcTemplate.Web.Controllers.HomeController)).GetName().Version;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/images/fa-icon.png" />
+    <title>Mvc Template</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div style="position: relative; float: left; margin-top: 20px; margin-bottom: 10px; ">
+                    <div style="float: left;">
+                        <a href="@Url.Action("Index", "Home")">
+                            <span style="text-transform: uppercase; font-size: 36px;">Mvc Template</span>
+                        </a>
+                    </div>
+                    <div style="float: left; margin-left: 10px; margin-top: 22px;">
+                        <span class="label label-warning">
+                            v @version
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-collapse collapse margin-top-35">
+                @Html.Partial("_MenuPartial")
+            </div>
+        </div>
+    </header>
+    <div class="site-menu-underline"></div>
+
+    <div style="background-color: #fff;">
+        <div class="container">
+            @Html.Partial("_MessagePanel")
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="container body-content">
+            <div class="margin-top-25">@RenderBody()</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            Copyright &copy; @DateTime.Now.Year
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

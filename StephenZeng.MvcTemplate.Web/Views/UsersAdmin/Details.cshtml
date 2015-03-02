@@ -1,0 +1,48 @@
+﻿@using StephenZeng.MvcTemplate.Web.Helpers
+@model StephenZeng.MvcTemplate.Common.Entities.User
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>Email confirmed</dt>
+        <dd>
+            @Model.EmailConfirmed.ToIcon()
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Approved)</dt>
+        <dd>
+            @Model.Approved.ToIcon()
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Address)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Roles)</dt>
+        <dd>
+            @string.Join(", ", ViewBag.RoleNames)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.RegisterTime)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.RegisterTime)
+        </dd>
+        <dt></dt>
+        <dd class="margin-top-35">
+            <div class="pull-left margin-right-15">@Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @Class = "btn btn-default" })</div>
+            <div class="pull-left">@Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @Class = "btn btn-danger" })</div>
+        </dd>
+    </dl>
+</div>
+
+<p>
+   @Url.GoBackTo("Go back to list", "Index")
+</p>
+
+
+

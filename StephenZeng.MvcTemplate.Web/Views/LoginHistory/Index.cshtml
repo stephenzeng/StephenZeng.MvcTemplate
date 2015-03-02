@@ -1,0 +1,25 @@
+﻿@using PagedList.Mvc
+@using StephenZeng.MvcTemplate.Web.Helpers
+@model PagedList.IPagedList<StephenZeng.MvcTemplate.Common.Entities.LoginHistory>
+
+<table class="table table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(m => m.AttemptTime)</th>
+        <th>@Html.DisplayNameFor(m => m.Email)</th>
+        <th>@Html.DisplayNameFor(m => m.Ip)</th>
+        <th>@Html.DisplayNameFor(m => m.Result)</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m => item.AttemptTime)</td>
+            <td>@Html.DisplayFor(m => item.Email)</td>
+            <td>@Html.DisplayFor(m => item.Ip)</td>
+            <td>@item.Result.GetDisplayName()</td>
+        </tr>
+    }
+</table>
+
+@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new{page}))

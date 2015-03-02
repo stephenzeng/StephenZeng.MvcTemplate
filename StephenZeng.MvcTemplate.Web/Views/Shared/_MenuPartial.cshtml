@@ -1,0 +1,63 @@
+﻿@using StephenZeng.MvcTemplate.Web.Helpers
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="@Html.ActivateCurrentMenu("Home")" href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-home"></i>
+                    Home
+                </a>
+            </li>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a class="@Html.ActivateCurrentMenu("UsersAdmin")" href="@Url.Action("Index", "UsersAdmin")">
+                        <i class="fa fa-user"></i>
+                        Users
+                    </a>
+                </li>
+            <li>
+                <a class="@Html.ActivateCurrentMenu("RolesAdmin")" href="@Url.Action("Index", "RolesAdmin" )">
+                    <i class="fa fa-user"></i>
+                    Roles
+                </a>
+            </li>
+                <li>
+                    <a class="@Html.ActivateCurrentMenu("LoginHistory")" href="@Url.Action("Index", "LoginHistory")">
+                        <i class="fa fa-history"></i>
+                        Login history
+                    </a>
+                </li>
+            }
+
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">
+                    <i class="fa fa-sign-out"></i>
+                    Log off
+                </a>
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="@Url.Action("Register", "Account")">
+                Register
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Login", "Account")">
+                <i class="fa fa-sign-in"></i>
+                Log in
+            </a>
+        </li>
+
+    </ul>
+}
